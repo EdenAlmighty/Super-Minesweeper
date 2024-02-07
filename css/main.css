@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    margin: 60px;
+}
+
+body {
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    background-color: rgb(152, 74, 74);
+}
+
+table {
+    border: 6px solid rgb(170, 170, 170);
+}
+
+.board td {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(42, 42, 42);
+    
+}
+
+
+
+td:hover {
+    background-color: rgb(90, 90, 90);
+    cursor: pointer;
+}
+.board-container {
+    background-color: rgb(224, 224, 224);
+    
+    margin: auto;
+    
+}
