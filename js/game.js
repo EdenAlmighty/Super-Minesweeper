@@ -23,7 +23,6 @@ function onInit() {
     gBoard = buildBoard()
     createMines(gBoard)
     loopSetMinesNegsCount(gBoard)
-    // loopSetMinesNegsCount(gBoard)
     console.log(gBoard);
     renderBoard(gBoard)
     console.table(gBoard);
@@ -46,7 +45,6 @@ function createMine(board) {
     }
     gMines.push(mine)
     board[mine.location.i][mine.location.j].isMine = true
-    // renderCell(board[mine.location.i][mine.location.j], MINE) 
 }
 
 // console.log(createMines(gBoard));
@@ -62,10 +60,8 @@ function buildBoard() {
                 isMarked: false
             }
             board[i][j] = cell
-            // cell = EMPTY
         }
     }
-    // board[1][1].isMine = true
     return board
 }
 
@@ -75,52 +71,40 @@ function renderBoard(board) {
     for (var i = 0; i < board.length; i++) {
         strHTML += '<tr>'
         for (var j = 0; j < board[0].length; j++) {
-            // runGeneration(gBoard)
             var cell = board[i][j]
-            const className = `cell cell-${i}-${j}`
+            const className = `hidden cell-${i}-${j}`
+            // console.log(cell.mineAroundCount);
             strHTML += `<td onclick="onCellClicked(this, ${i}, ${j})" class="${className}">`
-
-            console.log(cell.mineAroundCount);
-
-            // cell = (cell.isMine) ? MINE : EMPTY
-            // if (cell.mineAroundCount > 0 && !cell.isMine) cell = cell.mineAroundCount
-            // cell = (cell.isMine) ? MINE : cell.mineAroundCount
             if (cell.isMine) strHTML += MINE;
             else if (cell.mineAroundCount > 0) strHTML += cell.mineAroundCount
-            // else strHTML += `${cell.mineAroundCount}`
-            // if (cell.isMine) cell = MINE
             else if (cell.mineAroundCount === 0) cell += `${EMPTY}`
             else if (cell.isMarked) cell += `${MARKED}`
-
-
-
             strHTML += `</td>`
+            
         }
-
         strHTML += '</tr>'
     }
     const elBoard = document.querySelector('.board')
     elBoard.innerHTML = strHTML
     // console.log(setMinesNegsCount(board))
-    // 
 }
 
 function onCellClicked(elCell, cellI, cellJ) {
-    // if(gBoard[cellI][cellJ])
-    var location = `${cellI},${cellJ}`
-    elCell = gBoard[cellI][cellJ]
-    // setMinesNegsCount(cellI, cellJ, gBoard)
+    //    if(gBoard[ciZ])
+    // var elCell = gBoard[cellI][cellJ]
+    
+    if (elCell === MINE) {
+        gBoard[cellI][cellJ].classList.remove('hidden')
 
-
-    if (elCell.isMine) {
-        console.log(location, 'elCell: is a mine');
+    }
+    if (!elCell.isMine) {
+        expandShown(gBoard, elCell, cellI, cellJ)
     }
 }
 
-
-
 function setMinesNegsCount(cellI, cellJ, board) {
     var counter = 0
+    // var emptyCells = []
     for (var i = cellI - 1; i <= cellI + 1; i++) {
         if (i < 0 || i >= board.length) continue
         for (var j = cellJ - 1; j <= cellJ + 1; j++) {
@@ -129,36 +113,39 @@ function setMinesNegsCount(cellI, cellJ, board) {
             var currCell = board[i][j]
             if (currCell.isMine) {
                 counter++
-                // continue        
-                // console.log(currCell.mineAroundCount);
-                // renderCell(currCell, counter)
 
             }
         }
+        // console.log('emptyCells:',emptyCells);
+        // document.querySelector('h2 span.counter').innerText = counter
+        // console.log('sfs',currCell.mineAroundCount);
     }
-
-    document.querySelector('h2 span.counter').innerText = counter
-    // console.log('sfs',currCell.mineAroundCount);
     return counter
 }
 
 
 function loopSetMinesNegsCount(board) {
-    // const newBoard = copyMat(board)
     for (var i = 0; i < board.length; i++) {
         for (var j = 0; j < board[i].length; j++) {
             var numOfNeighbors = setMinesNegsCount(i, j, board)
-            // var currCell = board[i][j]
-            // if (currCell.isMine) continue
-
-            // if (currCell.mineAroundCount > 0) {
-            //     currCell.mineAroundCount = numOfNeighbors
-            // }
-            console.log(numOfNeighbors);
-
+            // console.log(numOfNeighbors);
             board[i][j].mineAroundCount = numOfNeighbors
-
         }
     }
-    // return currCell
+    return numOfNeighbors
+}
+
+function expandShown(board, elCell, i, j) {
+    for (var i = 0; i < board.length; i++) {
+        for (var j = 0; j < board[i].length; j++) {
+            var numOfNeighbors = setMinesNegsCount(i, j, board)
+            // console.log(numOfNeighbors);
+            if(numOfNeighbors < 3)
+            elCell.classList.remove('hidden')
+            renderBoard(board)
+            
+           
+            
+        }
+    }
 }
