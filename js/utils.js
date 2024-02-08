@@ -154,50 +154,50 @@ function removehighlight(board) {
 
 }
 
-function buildBoard() {
-    const size = 10
-    const board = []
+// function buildBoard() {
+//     const size = 10
+//     const board = []
 
-    for (var i = 0; i < size; i++) {
-        board.push([])
-        for (var j = 0; j < size; j++) {
-            board[i][j] = FOOD
-        }
-    }
-    board[1][1] = SUPER_FOOD
-    board[1][8] = SUPER_FOOD
-    board[8][1] = SUPER_FOOD
-    board[8][8] = SUPER_FOOD
-    // gFoodCounter += 4
-    return board
-}
+//     for (var i = 0; i < size; i++) {
+//         board.push([])
+//         for (var j = 0; j < size; j++) {
+//             board[i][j] = FOOD
+//         }
+//     }
+//     board[1][1] = SUPER_FOOD
+//     board[1][8] = SUPER_FOOD
+//     board[8][1] = SUPER_FOOD
+//     board[8][8] = SUPER_FOOD
+//     // gFoodCounter += 4
+//     return board
+// }
 
-function renderBoard(board) {
-    var strHTML = ''
-    for (var i = 0; i < board.length; i++) {
-        strHTML += '<tr>'
-        for (var j = 0; j < board[0].length; j++) {
+// function renderBoard(board) {
+//     var strHTML = ''
+//     for (var i = 0; i < board.length; i++) {
+//         strHTML += '<tr>'
+//         for (var j = 0; j < board[0].length; j++) {
 
-            const cell = board[i][j]
-            const className = `cell cell-${i}-${j}`
+//             const cell = board[i][j]
+//             const className = `cell cell-${i}-${j}`
 
-            strHTML += `<td class="${className}">${cell}</td>`
-        }
-        strHTML += '</tr>'
-    }
-    const elContainer = document.querySelector('.board')
-    elContainer.innerHTML = strHTML
+//             strHTML += `<td class="${className}">${cell}</td>`
+//         }
+//         strHTML += '</tr>'
+//     }
+//     const elContainer = document.querySelector('.board')
+//     elContainer.innerHTML = strHTML
 
-}
+// }
 
 // location is an object like this - { i: 2, j: 7 }
-function renderCell(location, value) {
-    // Select the elCell and set the value
-    var cellSelector = '.' + getClassName(location)
-    var elCell = document.querySelector(cellSelector)
-    elCell = value
+// function renderCell(location, value) {
+//     // Select the elCell and set the value
+//     var cellSelector = '.' + getClassName(location)
+//     var elCell = document.querySelector(cellSelector)
+//     elCell = value
     
-}
+// }
 
 function getClassName(location) {
     const cellClass = 'cell-' + location.i + '-' + location.j
@@ -221,3 +221,9 @@ function getClassName(location) {
 // function getMineHTML(mine) {
 //     return <span>${MINE}</span>
 // }
+
+
+function renderCell(cellI, cellJ) {
+    const elCell = document.querySelector(`[data-i="${cellI}"][data-j="${cellJ}"]`)
+    elCell.classList.remove('cell')
+}
