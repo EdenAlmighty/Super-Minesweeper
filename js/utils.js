@@ -109,22 +109,6 @@ function countEmptyPosAround(board, rowIdx, colIdx) {
     return count
 }
 
-// function blowUpNeighs(cellI, cellJ) {
-//     for (var i = cellI - 1; i <= cellI + 1; i++) {
-//         if (i < 0 || i >= gBoard.length) continue
-//         for (var j = cellJ - 1; j <= cellJ + 1; j++) {
-//             if (i === cellI && j === cellJ) continue
-//             if (j < 0 || j >= gBoard[i].length) continue
-
-//             // Model
-//             gBoard[i][j] = EMPTY
-
-//             // DOM
-//             const elCell = renderCell(i, j, EMPTY)
-//             elCell.classList.remove('occupied')
-//         }
-//     }
-// }
 
 // Highlight empty positions around object
 function highlightEmptyPosAround(board, rowIdx, colIdx) {
@@ -154,76 +138,22 @@ function removehighlight(board) {
 
 }
 
-// function buildBoard() {
-//     const size = 10
-//     const board = []
-
-//     for (var i = 0; i < size; i++) {
-//         board.push([])
-//         for (var j = 0; j < size; j++) {
-//             board[i][j] = FOOD
-//         }
-//     }
-//     board[1][1] = SUPER_FOOD
-//     board[1][8] = SUPER_FOOD
-//     board[8][1] = SUPER_FOOD
-//     board[8][8] = SUPER_FOOD
-//     // gFoodCounter += 4
-//     return board
-// }
-
-// function renderBoard(board) {
-//     var strHTML = ''
-//     for (var i = 0; i < board.length; i++) {
-//         strHTML += '<tr>'
-//         for (var j = 0; j < board[0].length; j++) {
-
-//             const cell = board[i][j]
-//             const className = `cell cell-${i}-${j}`
-
-//             strHTML += `<td class="${className}">${cell}</td>`
-//         }
-//         strHTML += '</tr>'
-//     }
-//     const elContainer = document.querySelector('.board')
-//     elContainer.innerHTML = strHTML
-
-// }
-
-// location is an object like this - { i: 2, j: 7 }
-// function renderCell(location, value) {
-//     // Select the elCell and set the value
-//     var cellSelector = '.' + getClassName(location)
-//     var elCell = document.querySelector(cellSelector)
-//     elCell = value
-    
-// }
-
 function getClassName(location) {
     const cellClass = 'cell-' + location.i + '-' + location.j
     return cellClass
 }
 
-// function countNeighbors(cellI, cellJ, mat) {
-//     var neighborsCount = 0
-//     for (var i = cellI - 1; i <= cellI + 1; i++) {
-//         if (i < 0 || i >= mat.length) continue
-//         for (var j = cellJ - 1; j <= cellJ + 1; j++) {
-//             if (i === cellI && j === cellJ) continue
-//             if (j < 0 || j >= mat[i].length) continue
-//             if (mat[i][j] === MINE) neighborsCount++
-//         }
-//     }
-//     document.querySelector('span.counter').innerText = neighborsCount
-//     return neighborsCount
-// }
-
-// function getMineHTML(mine) {
-//     return <span>${MINE}</span>
-// }
-
-
 function renderCell(cellI, cellJ) {
     const elCell = document.querySelector(`[data-i="${cellI}"][data-j="${cellJ}"]`)
     elCell.classList.remove('cell')
+}
+
+function showModal() {
+    const elModal = document.querySelector('.modal')
+    elModal.classList.remove('hide')
+}
+
+function hideModal() {
+    const elModal = document.querySelector('.modal')
+    elModal.classList.add('hide')
 }
