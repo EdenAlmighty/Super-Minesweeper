@@ -10,18 +10,24 @@
 
     <body onload="onInit()">
         <h1>Super Minesweeper! BETA</h1>
-        <h2 Mines: >Mines Around: <span class="counter">0</span></h2>
+        <h2 Tiles: >Revealed: <span class="counter"></span></h2>
         <h2 Flags: >Flags: <span class="flags">0</span></h2>
         <div class="timer-container">
-            Time: <span class="seconds">00</span>
+            Time: <span class="seconds">0</span>
+            Lives left: <span class="lives"></span>
         </div>
-
-
+        <!-- <div class="restart-btn">
+            <div class="button">
+               <span class="emoji">
+                😀
+               </span>
+            </div>
+            <span class="smiley">😀</span> -->
+        </div>
             <table class="board-container">
-                
                 <tbody class="board"></tbody>
             </table>
-
+            <footer> Created by: Eden Gilady</footer>
         <script src="js/utils.js"></script>
         <script src="js/game.js"></script>
     </body>

@@ -5,21 +5,21 @@
 
 h1 {
     margin: 60px;
+    color: white;
 }
-h2{
+
+h2 {
     display: inline;
     margin: 10px;
-    /* border: 10px; */
-    /* height: 20p; */
-
+    color: white;
 }
 
 
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: white;
+    color: rgb(26, 26, 26);
     background-color: rgb(54, 54, 54);
-    
+
 }
 
 tbody {
@@ -34,40 +34,101 @@ table {
 .timer-container {
     margin-top: 20px;
     margin-bottom: 20px;
-    width: auto
+    width: auto;
+    color: white;
+}
+
+.restart-btn {
+    background-color: rgb(240, 248, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vw;
+    user-select: none;
+}
+
+/* .restart-btn {
+    height: 60px;
+    width: 60px;
+    position: relative;
+    border: 3px solid green;
+} */
+
+.button {
+    background-color: rgb(158, 183, 183);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 3rem;
+    min-height: 3rem;
+    cursor: pointer;
+    border-radius: 25%;
+    margin: 0rem;
 
 }
+
+/* .smiley {
+    margin: 0px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+} */
+
 .board td {
     width: 50px;
     height: 50px;
     background-color: rgb(196, 195, 195);
-    
-    
 }
 
 td:hover {
-    background-color: rgb(90, 90, 90);
+    background-color: rgb(116, 116, 116);
     cursor: pointer;
-    
+
 }
 
-td:active{
+td:active {
     opacity: 100%;
 }
 
 .board-container {
-    background-color: rgb(224, 224, 224);  
-    
+    background-color: rgb(224, 224, 224);
+
 }
 
 .hidden {
     opacity: 50%;
-    color: black;
-    border: 1px solid black;
-    background-color: black;
+    /* color: rgb(65, 65, 65); */
+    border: 1px solid rgb(50, 50, 50);
+    background-color: rgb(48, 48, 48);
+    content: "\01F6A9";
+}
+
+.cell {
+    background-color: aquamarine;
+    color: aqua;
 }
 
 .flag {
-    opacity: 100%;
+    width: 2em;
+    height: 2em;
+    border: 4px solid black;
     background-color: blue;
+    color: black;
+
+}
+
+.flag::after {
+    /* display: inherit; */
+    content: "\01F6A9"
+    
+    
+}
+
+footer {
+    margin-top: 10px;
+    color: white;
 }
